@@ -1,0 +1,23 @@
+services:
+  connect-pg:
+    image: bitnami/postgresql:latest
+    volumes:
+      - connect-pg-data:/bitnami/postgresql
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+
+  connect-redis:
+    image: bitnami/redis:latest
+    volumes:
+      - connect-redis-data:/bitnami/redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6378:6379"
+
+volumes:
+  connect-pg-data:
+  connect-redis-data:
